@@ -50,6 +50,7 @@ export default function UserRoutes(app) {
         if (currentUser) {
             req.session["currentUser"] = currentUser;
             res.json(currentUser);
+            console.log(`From signin - currentUser: ${currentUser}`)
         } else {
             res.status(400).json({message: "Unable to login. Try again later."});
         }
@@ -57,8 +58,6 @@ export default function UserRoutes(app) {
     app.post("/api/users/signin", signin);
     
     const profile = async (req, res) => {
-        console.log(req.session["currentUser"])
-        console.log(req.session.currentUser)
         const currentUser = req.session["currentUser"];
         if (!currentUser) {
             res.sendStatus(401);
