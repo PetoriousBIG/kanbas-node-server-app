@@ -57,7 +57,8 @@ export default function UserRoutes(app) {
     app.post("/api/users/signin", signin);
     
     const profile = async (req, res) => {
-        console.log(req)
+        console.log(req.session["currentUser"])
+        console.log(req.session.currentUser)
         const currentUser = req.session["currentUser"];
         if (!currentUser) {
             res.sendStatus(401);
