@@ -21,7 +21,7 @@ app.use(
     }));
 
 const sessionOptions = {
-    secret: process.env.SESSION_SECRET || "kanbas",
+    secret: process.env.SESSION_SECRET || "what ever",
     resave: false,
     saveUninitialized: false,
 };
@@ -46,4 +46,9 @@ AssignmentsRoutes(app);
 UserRoutes(app);
 Lab5(app);
 Hello(app);
+
+app.get("/env", (req, res) => {
+    res.json(process.env);
+});
+
 app.listen(process.env.PORT || 4000);
