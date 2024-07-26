@@ -50,7 +50,7 @@ export default function UserRoutes(app) {
         if (currentUser) {
             req.session["currentUser"] = currentUser;
             res.json(currentUser);
-            console.log(`From signin - currentUser: ${currentUser}`)
+            console.log(`From signin - currentUser: ${req.session["currentUser"]}`)
         } else {
             res.status(400).json({message: "Unable to login. Try again later."});
         }
@@ -59,7 +59,7 @@ export default function UserRoutes(app) {
     
     const profile = async (req, res) => {
         const currentUser = req.session["currentUser"];
-        console.log(`CurrentUser: ${currentUser}`)
+        console.log(`From profile - currentUser: ${req.session["currentUser"]}`)
         if (!currentUser) {
             res.sendStatus(401);
             return;
@@ -82,6 +82,7 @@ export default function UserRoutes(app) {
         }
         const currentUser = await dao.createUser(req.body);
         req.session["currentUser"] = currentUser;
+        console.log(`From signup - currentUser: ${req.session["currentUser"]}`)
         res.json(currentUser);
     };
     app.post("/api/users/signup", signup);
