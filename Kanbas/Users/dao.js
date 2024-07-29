@@ -2,7 +2,7 @@ import model from "./model.js";
 let currentUser =  null;
 
 export const createUser = (user) => {
-    delete user._id
+    delete user._id;
     return model.create(user);  
 }
 

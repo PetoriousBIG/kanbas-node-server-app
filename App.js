@@ -21,7 +21,7 @@ app.use(
     }));
 
 const sessionOptions = {
-    secret: process.env.SESSION_SECRET || "what_ever",
+    secret: process.env.SESSION_SECRET || "what ever",
     resave: false,
     saveUninitialized: false,
 };
